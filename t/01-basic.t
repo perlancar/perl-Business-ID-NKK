@@ -12,7 +12,7 @@ test_parse(
     nkk    => "32 7300 010101 0001",
     status => 200,
     result => {
-        'entry_date' => 978307200,
+        'entry_date' => '2001-01-01',
         'loc_code' => '3273',
         'loc_ind_name' => 'BANDUNG',
         'loc_type' => '1',

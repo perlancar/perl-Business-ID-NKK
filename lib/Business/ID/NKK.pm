@@ -75,7 +75,7 @@ sub parse_nkk {
     }
 
     my ($d, $m, $y) = $nkk =~ /^\d{6}(..)(..)(..)/;
-    eval { $res->{entry_date} = DateTime->new(day=>$d, month=>$m, year=>$y+2000) };
+    eval { $res->{entry_date} = DateTime->new(day=>$d, month=>$m, year=>$y+2000)->ymd};
     if ($@) {
         return [400, "Invalid entry date (dd-mm-yy): $d-$m-$y"];
     }
