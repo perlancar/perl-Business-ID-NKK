@@ -5,7 +5,6 @@ use strict;
 use warnings;
 
 use Business::ID::NKK qw(parse_nkk);
-use Data::Clean::JSON;
 use Test::More 0.98;
 
 test_parse(
@@ -33,12 +32,9 @@ DONE_TESTING:
 done_testing;
 
 sub test_parse {
-    # just to convert DateTime objects to Unix time
-    state $cleanser = Data::Clean::JSON->get_cleanser;
-
     my %args = @_;
     subtest +($args{name} //= "nkk $args{nkk}"), sub {
-        my $res = $cleanser->clean_in_place(parse_nkk(nkk => $args{nkk}));
+        my $res = parse_nkk(nkk => $args{nkk});
         if (exists $args{status}) {
             is($res->[0], $args{status}) or diag explain $res;
         }
